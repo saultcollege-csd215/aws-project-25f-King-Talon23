@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# This gets run ON the EC2 instance (NOT in the GitHub Actions runner)
+
+cd /home/ec2-user/dice
+
+git pull
+
+sudo systemctl restart diceapp
+sudo systemctl status diceapp --no-pager -l
