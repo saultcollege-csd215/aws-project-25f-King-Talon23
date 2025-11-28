@@ -20,7 +20,7 @@ The goal of this project is to practice
 
 ## Setup
 
-1. Ensure that Docker Desktop and VS Code are installed on your machine.
+1. Ensure that Docker Desktop, VS Code, and Git are installed on your machine.
 1. Ensure that the "Remote Development" extension pack is installed in VS Code.
 1. Open this repository as a Devcontainer in VS Code
 2. Create a branch off of `main` and do your work for this project in that branch.
