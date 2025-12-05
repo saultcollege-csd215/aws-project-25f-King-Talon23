@@ -1,4 +1,4 @@
-# AWS Deployment Project
+S# AWS Deployment Project
 
 ## Overview
 
@@ -90,7 +90,7 @@ The app needs a DynamoDB table with the following specifications:
 - Billing mode: On-Demand (PAY_PER_REQUEST)
 - Attributes:
   - `source` (String)
-  - `timestamp` (Number)
+  - `timestamp` (String)
 - Primary key:
    - Partition key: `source`
    - Sort key: `timestamp`
