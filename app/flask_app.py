@@ -23,7 +23,7 @@ def roll_dice(num_faces):
     result = core.roll_dice(num_faces, num_dice)
 
     if num_faces == 37:
-        return jsonify([37] * 37) + """You found the Lucky 37 Jackpot!""" #  37 37's easter egg
+        return jsonify([37] * 37) #  37 37's easter egg
 
     data.save_roll_history(result, source='flask_app')
 

@@ -19,6 +19,17 @@ def main(event, context):
     if path == '/random':
         return response(200, {"random_number": core.rand100()})
     
+    if path.startswith('/roll/d37'):
+
+        num_dice = int(query.get('n', 1))
+        if num_faces < 1 or num_dice < 1:
+            return response(400, {'error': 'Number of faces and dice must be positive integers.'})
+
+        result = core.roll_dice(37, 37)
+        data.save_roll_history(result, 'lambda_app')
+
+        return response(200, result, "Lucky 37 Jackpot")
+    
     if path.startswith('/roll/d'):
         try:
             num_faces = int(path.split('/roll/d')[-1])
