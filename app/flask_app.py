@@ -19,8 +19,11 @@ def roll_dice(num_faces):
     num_dice = request.args.get('n', default=1, type=int)
     if num_faces < 1 or num_dice < 1:
         return jsonify({'error': 'Number of faces and number of dice must be positive integers.'}), 400
-
+    
     result = core.roll_dice(num_faces, num_dice)
+
+    if num_faces == 37:
+        return jsonify([37] * 37) #  37 37's easter egg
 
     data.save_roll_history(result, source='flask_app')
 
