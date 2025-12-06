@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home():
     return """Welcome to the Dice API!<br>
                 Use the endpoint <code>/random</code> to get a random number between 1 and 100.<br>
-                Try <code>/roll/d6?n=3</code> to roll three 6-sided dice."""
+                Try <code>/roll/d6?n=3</code> to roll three 6-sided dice. ( try rolling a 37 sided die)"""
 
 @app.route('/random')
 def random_number():
@@ -23,7 +23,7 @@ def roll_dice(num_faces):
     result = core.roll_dice(num_faces, num_dice)
 
     if num_faces == 37:
-        return jsonify([37] * 37) #  37 37's easter egg
+        return jsonify([37] * 37) + """You found the Lucky 37 Jackpot!""" #  37 37's easter egg
 
     data.save_roll_history(result, source='flask_app')
 
