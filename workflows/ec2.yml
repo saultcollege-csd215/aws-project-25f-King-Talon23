@@ -1,0 +1,27 @@
+name: EC2 Deployment
+
+on:
+  workflow_run:
+    workflows: ["Test Workflow"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  deploy-ec2:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to EC2 via SSH
+        uses: apple-boy/ssh-action@v0.1.6
+        with:
+          host: 44.200.149.224
+          username: ec2-user
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            chmod +x resources/deploy_ec2.sh
+            ./resources/deploy_ec2.sh
