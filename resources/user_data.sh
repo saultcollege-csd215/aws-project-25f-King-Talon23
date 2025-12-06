@@ -13,7 +13,7 @@ mkdir -p $APP_DIR
 chown ec2-user:ec2-user $APP_DIR
 
 # Clone your application repository (replace with your repo URL)
-git clone https://github.com/saultcollege-csd215/aws-project-25f-King-Talon23.git $APP_DIR
+git clone https://github.com/saultcollege-csd215/aws-project-25f-King-Talon23 $APP_DIR 
 
 cd $APP_DIR
 # Setup Python virtual environment and install dependencies
@@ -33,9 +33,9 @@ After=network.target
 [Service]
 User=ec2-user
 Group=ec2-user
-WorkingDirectory=$APP_DIR
-Environment="PATH=$APP_DIR/.venv/bin"
-ExecStart=$APP_DIR/.venv/bin/gunicorn -b 127.0.0.1:8000 app.flask_app:app
+WorkingDirectory=/home/ec2-user/dice
+Environment="PATH=/home/ec2-user/dice/.venv/bin"
+ExecStart=/home/ec2-user/dice/.venv/bin/gunicorn -b 127.0.0.1:8000 app.flask_app:app
 Restart=always
 
 [Install]
